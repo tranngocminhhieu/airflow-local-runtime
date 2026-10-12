@@ -19,6 +19,8 @@ All you need is:
 1. **A ready-made External Python Environment**\
    Install as many packages as you want without breaking Airflow — no container restart, and it
    persists. Point the `task.external_python` decorator at it via the `EXTERNAL_PYTHON` env var.
+   `PYTHONUNBUFFERED=1` is set, so `print()` in those tasks shows up in the task log as it happens
+   (useful for progress lines in long loops) instead of all at once when the task ends.
 2. **Traefik pre-configured (commented out)** to route a domain to Airflow.
 3. **Multiple DAG sources pre-configured (commented out):**\
    `LocalDagBundle` for folders on the host, `GitDagBundle` for GitHub repos.

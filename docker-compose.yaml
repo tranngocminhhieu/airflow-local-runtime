@@ -42,6 +42,9 @@ x-airflow-common:
 
     # Help variable
     EXTERNAL_PYTHON: /opt/airflow/pyenv/venv/bin/python3
+    # External python tasks inherit this env. Without it Python block-buffers stdout over the pipe,
+    # so print() output only reaches the task log when the task ends.
+    PYTHONUNBUFFERED: '1'
     DATA_DIR: /opt/airflow/data
 
   volumes:
